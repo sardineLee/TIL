@@ -1,0 +1,56 @@
+# TODO
+* OpenGL Shaders  
+* OpenGL Textures  
+* OpenGL Transformations  
+  
+
+```
+```
+<br/> <br/>
+  
+# 1
+* GLSL은 Shader를 다루는 언어. vector, matrix를 조작하는데 유용한 기능을 가지고 있음.  
+* 입력변수 vertex attribute는 선언할 수 있는 최대 개수가 정해져있음. OpenGL은 4가지의 요소를 가진 vertex attribute를 최소 16개까지 보장함.  
+* 이건 하드웨어별로 다른데 GL_MAX_VERTEX_ATTRIBS를 통해 알 수 있음.  
+* 일반적인 구조는 다음과 같다.  
+```
+#version 330 //version_number
+in type in_variable_name; // --> 입력변수는 vertex attribute라 부름
+in type in_variable_name; // --> 입력변수는 vertex attribute라 부름
+
+out type out_variable_name;
+
+uniform type uniform_name;
+
+void main()
+{
+  //입력값을 처리하고 그래픽 작업을 함.
+  ...
+  //처리된 것을 출력 변수로 출력
+  out_variable_name = weird_stuff_we_processed;
+}
+```
+* OpenGL의 Vectors 요소는 x, y, z, w가 있고 컬러는 rgba, 텍스쳐 좌표는 stpq를 사용.
+* Vector의 요소는 vec.x와 같이 접근할 수 있고 swizzling이 가능함.
+```
+vec2 someVec;
+vec4 differentVec = someVec.xyxx;
+vec3 anotherVec = differentVec.zyw;
+vec4 otherVec = someVec.xxxx + anotherVec.yxzy;
+
+vec2 vect = vec2(0.5, 0.7);
+vec4 result = vec4(vect, 0.0, 0.0);
+vec4 otherResult = vec4(result.xyz, 1.0)
+```
+<br/> <br/>
+
+# 2  
+* Vertex shader는 항상 일정한 vertex 데이터 형태의 입력을 받아야 한다.  
+* Vertex 데이터가 어떻게 구성되어 있는지 정의하기 위해 location 메타데이터와 함께 입력변수를 지정해서 CPU에 Vertex Attribute를 구성했다.  
+* 그 구문이 in layout (location = 0)  
+* glGetAttribLocation 함수를 통해 attribute의 location은 물어볼 수 있지만 vertex shader에 직접 설정하는 것을 권장함. -> 다른 작업 안해도 되니까  
+* 
+
+
+# 3
+* brew 가 권한 때문에 되지 않을 때. : sudo chown -R $(whoami) $(brew --prefix)/*
