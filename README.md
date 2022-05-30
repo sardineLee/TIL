@@ -6,4 +6,5 @@ Today I Learn
 - GStreamer, FFMpeg 과 같은 미디어 프레임워크
 - OpenGL
 - Desktop UI 관련 기술
+- iOS
 - 기타 신기술
